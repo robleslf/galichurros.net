@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide" id="slide1"><img src="img/000.png"></div>
+    <div class="slide" id="slide2"><img src="img/001.png"></div>
+    <div class="slide" id="slide3"><img src="img/002.png"></div>
+    <div class="slide" id="slide4"><img src="img/003.png"></div>
+    <div class="slide" id="slide5"><img src="img/004.png"></div>
+    <div class="slide" id="slide6"><img src="img/005.png"></div>
+    <div class="slide" id="slide7"><img src="img/006.png"></div>
+    <div class="slide" id="slide8"><img src="img/007.png"></div>
+    <div class="slide" id="slide9"><img src="img/008.png"></div>
+
+    <button id="prev">&#10094;</button>
+    <button id="next">&#10095;</button>
+    
+    <script>
+        let currentSlide = 1;
+        const slides = document.querySelectorAll('.slide');
+        document.getElementById('next').addEventListener('click', () => {
+            slides[currentSlide - 1].style.display = 'none';
+            currentSlide = (currentSlide % slides.length) + 1;
+            slides[currentSlide - 1].style.display = 'block';
+        });
+        document.getElementById('prev').addEventListener('click', () => {
+            slides[currentSlide - 1].style.display = 'none';
+            currentSlide = (currentSlide - 2 + slides.length) % slides.length + 1;
+            slides[currentSlide - 1].style.display = 'block';
+        });
+        slides.forEach((slide, index) => { if (index !== 0) slide.style.display = 'none'; });
+    </script>
+</body>
+</html>
